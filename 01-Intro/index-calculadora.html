@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        *{
+            font-family: 'Poppins', sans-serif;
+        }
+        span{
+            font-size: 2rem;
+            font-weight: 600;
+        }
+    </style>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Calculadora</h1>
+    <div class="app"></div>
+    <script type="text/babel">
+        const $app = document.querySelector(".app");
+        const useState = React.useState;
+
+        function Calculadora() {
+            // Se pueden usar más de 1 estado
+            let [contadorValue, actualizarValue] = useState(51)
+            let [noVeces, actualizarVeces] = useState(0)
+            return (
+                <div>
+                    <span> {contadorValue} </span>
+                    <button 
+                        onClick = { () => { 
+                            actualizarValue(contadorValue + 1) 
+                            actualizarVeces(noVeces + 1)
+                        }}
+                    > Incrementar + </button>
+                    <button
+                        onClick = { () => { 
+                            actualizarValue(contadorValue - 1)
+                            actualizarVeces(noVeces + 1)
+                        }}
+                    > Decrementar - </button>
+
+                    <p>No. de veces {noVeces}</p>
+                </div>
+            );
+        }
+        ReactDOM.render(
+            <div>
+                <Calculadora/>
+            </div>,
+            $app
+        );
+    </script>
+</body>
+
+</html>
